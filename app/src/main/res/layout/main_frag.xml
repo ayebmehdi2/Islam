@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#EEE"
+    android:padding="16dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:onClick="salawet"
+        android:orientation="vertical"
+        android:id="@+id/salawet"
+        android:layout_width="match_parent"
+        android:background="@drawable/gradient"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingEnd="24dp"
+            android:text="مواقيت الصلاة والأذان"
+            android:textColor="#673ab7"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="24dp"
+            android:text="تصفح أوقات الصلاة حسب توقيت مدينتك"
+            android:textColor="#9575cd"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16sp"
+            android:src="@drawable/ic_prayer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:onClick="mesbaha"
+        android:orientation="vertical"
+        android:id="@+id/mesbaha"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/gradient_sebha"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingEnd="24dp"
+            android:text="مِسبحة"
+            android:textColor="#1b5e20"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="24dp"
+            android:text="اداة بسيطة لتسبيح عن طريق الهاتف"
+            android:textColor="#388e3c"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16sp"
+            android:src="@drawable/ic_tasbih"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/after"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <View
+            android:id="@+id/view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:background="@drawable/gradient_sunrise"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            app:layout_constraintEnd_toEndOf="@id/view"
+            app:layout_constraintTop_toTopOf="@id/view"
+            android:layout_margin="16sp"
+            android:src="@drawable/ic_sunrise"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/logo"
+            android:layout_marginEnd="16sp"
+            android:textSize="22sp"
+            android:textColor="#FAFAFA"
+            app:layout_constraintTop_toTopOf="@id/logo"
+            android:text="أذكار الصباح"
+            app:layout_constraintBottom_toBottomOf="@id/logo"/>
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            android:layout_marginTop="16sp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:onClick="AA"
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:background="@drawable/gra_item"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_music2"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="مسموعة"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:onClick="A"
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:background="@drawable/gra_item"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_libre2"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="مكتوبة"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <View
+            android:id="@+id/view1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:background="@drawable/gradient_sun"/>
+
+        <ImageView
+            android:id="@+id/logo1"
+            app:layout_constraintEnd_toEndOf="@+id/view1"
+            app:layout_constraintTop_toTopOf="@+id/view1"
+            android:layout_margin="16sp"
+            android:src="@drawable/ic_sun"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/logo1"
+            android:layout_marginEnd="16sp"
+            android:textSize="22sp"
+            android:textColor="#FAFAFA"
+            app:layout_constraintTop_toTopOf="@+id/logo1"
+            android:text="أذكار الصباح"
+            app:layout_constraintBottom_toBottomOf="@+id/logo1"/>
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@+id/logo1"
+            android:layout_marginTop="16sp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:onClick="TT"
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:background="@drawable/gra_item"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_music1"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="مسموعة"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:onClick="T"
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:background="@drawable/gra_item"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_libre1"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="مكتوبة"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <View
+            android:id="@+id/a"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:background="@drawable/grandient_sunset"/>
+
+        <ImageView
+            android:id="@+id/b"
+            app:layout_constraintEnd_toEndOf="@id/a"
+            app:layout_constraintTop_toTopOf="@id/a"
+            android:layout_margin="16sp"
+            android:src="@drawable/ic_sunset"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/b"
+            android:layout_marginEnd="16sp"
+            android:textSize="22sp"
+            android:textColor="#FAFAFA"
+            app:layout_constraintTop_toTopOf="@id/b"
+            android:text="أذكار الصباح"
+            app:layout_constraintBottom_toBottomOf="@id/b"/>
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@id/b"
+            android:layout_marginTop="16sp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:onClick="DD"
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:background="@drawable/gra_item"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_music"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="مسموعة"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
+                android:onClick="D"
+                android:orientation="vertical"
+                android:layout_width="120dp"
+                android:gravity="center"
+                android:background="@drawable/gra_item"
+                android:layout_height="120dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_libre"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="مكتوبة"
+                    android:textSize="18sp"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

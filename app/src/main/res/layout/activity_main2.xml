@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".Main2Activity">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:background="#EEE"
+        android:paddingTop="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/sh1"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:id="@+id/logo"
+            android:layout_marginStart="6dp"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_mosque"/>
+
+        <TextView
+            android:textColor="#4895ff"
+            app:layout_constraintStart_toEndOf="@id/logo"
+            android:layout_width="wrap_content"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="70dp"
+            android:src="@drawable/ic_settings"
+            android:layout_height="match_parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.design.widget.CoordinatorLayout>

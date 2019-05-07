@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/l"
+    android:paddingTop="16dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/a"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/sh1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/zeker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chivo"
+            android:text="اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ على نَبِيِّنَا مُحمَّد."
+            android:textColor="#424242"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/desc"
+            android:paddingTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/zeker"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#b06ab3"
+            android:text="من صلى على حين يصبح وحين يمسى ادركته شفاعتى يوم القيامة."/>
+
+        <ImageView
+            android:id="@+id/vec_user"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_person"
+            app:layout_constraintStart_toStartOf="@id/desc"
+            app:layout_constraintTop_toBottomOf="@id/desc" />
+
+        <TextView
+            android:id="@+id/user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="الطبراني"
+            android:textColor="#616161"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/vec_user"
+            app:layout_constraintStart_toEndOf="@id/vec_user" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <!--
+
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="أذكار المساء"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:gravity="center_horizontal"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/sh2"
+        app:layout_constraintStart_toStartOf="@id/a"
+        app:layout_constraintEnd_toEndOf="@id/a"
+        app:layout_constraintTop_toBottomOf="@id/a" />
+
+    -->
+
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEE"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec_azkar"
+        android:paddingTop="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/sh1"
+        android:gravity="end"
+        android:id="@+id/header"
+        android:layout_height="60dp">
+        <TextView
+            android:id="@+id/tex"
+            android:textColor="#616161"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="end"
+            android:text="أذكار الصباح"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:id="@+id/vect"
+            android:layout_width="80dp"
+            android:padding="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_sunset"
+            />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
