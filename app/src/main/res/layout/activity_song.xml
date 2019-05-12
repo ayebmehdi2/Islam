@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#e0e0e0"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:paddingStart="8dp"
+        android:paddingEnd="16dp"
+        android:background="@drawable/sh1"
+    android:layout_height="65dp">
+        <ImageView
+            android:onClick="toback"
+            android:id="@+id/back"
+            android:layout_width="55dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_to_back"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="اذكار مسموعه"
+            android:textSize="22sp"
+            android:textColor="#616161"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rec"
+        android:layout_width="match_parent"
+        android:layout_marginTop="65dp"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/player"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/sh2"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:layout_height="65dp">
+        <ImageView
+            android:id="@+id/pause"
+            android:visibility="gone"
+            android:src="@drawable/ic_pause_b"
+            android:layout_width="50dp"
+            android:layout_gravity="center"
+            android:padding="12dp"
+            android:layout_height="50dp" />
+
+        <ImageView
+            android:id="@+id/play"
+            android:src="@drawable/ic_play_button"
+            android:layout_width="45dp"
+            android:layout_gravity="center"
+            android:padding="12dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/name_zeker"
+            android:layout_width="0dp"
+            android:textColor="@color/cl"
+            android:maxLines="2"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:text="أذكار الصباح والمساء"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
+</layout>

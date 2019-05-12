@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
+    android:background="@color/gray_blue"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="0dp">
+
+
+        <TextView
+            android:id="@+id/date"
+            android:textColor="@color/gray_blue_text"
+            android:layout_width="220dp"
+            tools:text="10  May  2019"
+            android:textSize="20sp"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/place"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date"
+            android:layout_marginTop="4dp"
+            android:entries="@array/city"
+            android:textColor="#757575"
+            android:textSize="16sp" />
+
+
+        <ImageView
+            android:contentDescription="@string/to"
+            android:padding="8dp"
+            android:id="@+id/map"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="-8dp"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/ic_place" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginBottom="9dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/gra_item"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        >
+
+        <RelativeLayout
+            style="@style/rel_lay">
+            <LinearLayout
+                style="@style/lin_lay">
+                <TextView
+                    style="@style/salat"
+                    android:text="@string/fajr"/>
+                <TextView
+                    android:id="@+id/fajr"
+                    style="@style/salat_time" />
+            </LinearLayout>
+            <ImageView
+                android:src="@drawable/ic_subah_prayer"
+                style="@style/lg"
+                android:contentDescription="@string/to" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_blue"/>
+
+        <RelativeLayout
+            style="@style/rel_lay">
+            <LinearLayout
+                style="@style/lin_lay">
+                <TextView
+                    style="@style/salat"
+                    android:text="@string/subah"/>
+                <TextView
+                    android:id="@+id/subah"
+                    style="@style/salat_time" />
+            </LinearLayout>
+            <ImageView
+                android:contentDescription="@string/to"
+                android:src="@drawable/ic_subah"
+                style="@style/lg"
+                />
+        </RelativeLayout>
+
+        <View
+            android:contentDescription="@string/to"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_blue"/>
+
+        <RelativeLayout
+            style="@style/rel_lay">
+            <LinearLayout
+                style="@style/lin_lay">
+                <TextView
+                    style="@style/salat"
+                    android:text="@string/dhuhr"/>
+                <TextView
+                    android:id="@+id/dhuhr"
+                    style="@style/salat_time" />
+            </LinearLayout>
+            <ImageView
+                android:contentDescription="@string/to"
+                android:src="@drawable/ic_zuhar"
+                style="@style/lg"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_blue"/>
+        <RelativeLayout
+            style="@style/rel_lay">
+            <LinearLayout
+                style="@style/lin_lay">
+                <TextView
+                    style="@style/salat"
+                    android:text="@string/asr"/>
+                <TextView
+                    android:id="@+id/asr"
+                    style="@style/salat_time" />
+            </LinearLayout>
+            <ImageView
+                android:contentDescription="@string/to"
+                android:src="@drawable/ic_asr"
+                style="@style/lg"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_blue"/>
+        <RelativeLayout
+            style="@style/rel_lay">
+            <LinearLayout
+                style="@style/lin_lay">
+                <TextView
+                    style="@style/salat"
+                    android:text="@string/maghrib"/>
+                <TextView
+                    android:id="@+id/maghrib"
+                    style="@style/salat_time"
+                   />
+            </LinearLayout>
+            <ImageView
+                android:contentDescription="@string/to"
+                android:src="@drawable/ic_meghrib"
+                style="@style/lg"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_blue"/>
+        <RelativeLayout
+            style="@style/rel_lay">
+            <LinearLayout
+                style="@style/lin_lay">
+                <TextView
+                    style="@style/salat"
+                    android:text="@string/isha"/>
+                <TextView
+                    android:id="@+id/isha"
+                    style="@style/salat_time" />
+            </LinearLayout>
+            <ImageView
+                android:contentDescription="@string/to"
+                android:src="@drawable/ic_isha"
+                style="@style/lg"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gray_blue"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eee"
+        android:alpha=".6"/>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/pr"
+        android:layout_centerInParent="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+
+    <LinearLayout
+        android:id="@+id/time_ed"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="#EEEEEE"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/day"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/gray_blue_text"
+            android:hint="Day"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/month"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/gray_blue_text"
+            android:hint="Month"
+            android:inputType="number" />
+        <EditText
+            android:id="@+id/year"
+            android:layout_marginTop="8dp"
+            android:layout_width="100dp"
+            android:layout_height="48dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/gray_blue_text"
+            android:hint="Year"
+            android:inputType="number" />
+
+        <ImageView
+            android:id="@+id/aplly"
+            android:layout_width="50dp"
+            android:background="@drawable/gr"
+            android:padding="5dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_check"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+</layout>

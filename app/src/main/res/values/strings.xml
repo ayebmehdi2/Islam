@@ -4,5 +4,49 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="mm"><![CDATA[<]]></string>
+    <string name="hello">Hello World, QiblaSenseActivity!</string>
+
+
+    <string-array name="city">
+        <item>Tunis</item>
+        <item>Sfax</item>
+        <item>Hammam Sousse</item>
+        <item>Gabès</item>
+        <item>Zarzis</item>
+        <item>Kairouan</item>
+        <item>Bizerte</item>
+        <item>Gafsa</item>
+        <item>Nabeul</item>
+        <item>Ariana</item>
+        <item>Kasserine</item>
+        <item>Mnara</item>
+        <item>Tataouine</item>
+        <item>Béja</item>
+        <item>Jendouba</item>
+        <item>El Kef</item>
+        <item>Mahdia</item>
+        <item>Sidi Bouzid</item>
+        <item>Tozeur</item>
+        <item>Siliana</item>
+        <item>Kebili</item>
+        <item>Ben Gardane</item>
+        <item>Zaghouan</item>
+        <item>Dehiba</item>
+        <item>Sousse</item>
+        <item>Ben Arous</item>
+        <item>Medenine</item>
+        <item>Manouba</item>
+        <item>Monastir</item>
+    </string-array>
+
     <string name="mmm"><![CDATA[>]]></string>
+    <string name="subah">Subah</string>
+    <string name="fajr">Fajr</string>
+    <string name="dhuhr">Dhuhr</string>
+    <string name="asr">Asr</string>
+    <string name="maghrib">Maghrib</string>
+    <string name="isha">Isha</string>
+    <string name="to">TODO</string>
+    <string name="imsak">Imsak</string>
+    <string name="go">توجه</string>
 </resources>

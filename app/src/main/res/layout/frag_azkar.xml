@@ -1,44 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#EEE"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rec_azkar"
-        android:paddingTop="58dp"
+<layout>
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="#E0E0E0"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:background="@drawable/sh1"
-        android:gravity="end"
-        android:id="@+id/header"
-        android:layout_height="60dp">
-        <TextView
-            android:id="@+id/tex"
-            android:textColor="#616161"
-            android:textStyle="bold"
-            android:textSize="22sp"
-            android:layout_marginEnd="10dp"
-            android:layout_gravity="end"
-            android:text="أذكار الصباح"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <ImageView
-            android:id="@+id/vect"
-            android:layout_width="80dp"
-            android:padding="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_sunset"
-            />
-    </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rec_azkar"
+            android:paddingTop="107dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="match_parent"
+            android:background="#FAFAFA"
+            android:gravity="end"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:id="@+id/header"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="60dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_to_back"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/tex"
+                android:textColor="#616161"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="end"
+                android:text="أذكار مكتوبة"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="5dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/sh1"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/grandient_sunset"/>
+                <View
+                    android:id="@+id/vm"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="3dp"
+                    android:visibility="gone"
+                    android:layout_marginBottom="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_sunrise"/>
+
+                <TextView
+                    android:id="@+id/tm"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="الصباح"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/grandient_sunset"/>
+                <View
+                    android:id="@+id/va"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_sunrise"/>
+
+                <TextView
+                    android:id="@+id/ta"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="المساء"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/grandient_sunset"/>
+                <View
+                    android:id="@+id/vd"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_sunrise"/>
+
+                <TextView
+                    android:id="@+id/td"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="اليوم"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/pr"
+            android:layout_width="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="30dp" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

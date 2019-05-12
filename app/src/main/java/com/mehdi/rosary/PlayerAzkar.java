@@ -1,6 +1,5 @@
 package com.mehdi.rosary;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -22,6 +20,7 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.mehdi.rosary.AzkarSong.SongsDetail;
 import com.mehdi.rosary.databinding.PlayerLayoutBinding;
 
 public class PlayerAzkar extends AppCompatActivity  implements ExoPlayer.EventListener{
@@ -33,12 +32,20 @@ public class PlayerAzkar extends AppCompatActivity  implements ExoPlayer.EventLi
 
     PlayerLayoutBinding binding;
 
+
+    private String AzkarSabah = "https://api.myjson.com/bins/u7fim";
+    private String AzkarMasaa = "https://api.myjson.com/bins/12hctq";
+    private String AzkarYawm = "https://api.myjson.com/bins/veaq6";
+
+    private String AzkarSong = "https://www.hisnmuslim.com/api/ar/husn_ar.json";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.player_layout);
 
+        /*
         if (detail == null ){
             Log.e("MEHDI", "DETAIL IS NULL");
             return;
@@ -50,7 +57,7 @@ public class PlayerAzkar extends AppCompatActivity  implements ExoPlayer.EventLi
         nam.setText(detail.getName());
 
         initilazePlayer(detail.getSong_name());
-
+*/
     }
 
     @Override
@@ -66,10 +73,12 @@ public class PlayerAzkar extends AppCompatActivity  implements ExoPlayer.EventLi
     }
 
     private void pausePlayer(){
+        if (player == null) return;
         player.setPlayWhenReady(false);
         player.getPlaybackState();
     }
     private void startPlayer(){
+        if (player == null) return;
         player.setPlayWhenReady(true);
         player.getPlaybackState();
     }
@@ -101,6 +110,7 @@ public class PlayerAzkar extends AppCompatActivity  implements ExoPlayer.EventLi
     }
 
     public void releasePlayer(){
+        if (player == null ) return;
         player.stop();
         player.release();
         player = null;
@@ -111,11 +121,6 @@ public class PlayerAzkar extends AppCompatActivity  implements ExoPlayer.EventLi
         super.onDestroy();
         releasePlayer();
     }
-
-    public void toback(View view){
-        startActivity(new Intent(this, Main2Activity.class));
-    }
-
     @Override
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         if ((playbackState == ExoPlayer.STATE_READY) && playWhenReady){
