@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mehdi.rosary.NetworkUtil;
 import com.mehdi.rosary.R;
 import com.mehdi.rosary.databinding.PrayerLayoutBinding;
 
@@ -103,7 +104,18 @@ public class SalawetActivity extends AppCompatActivity implements SharedPreferen
             }
         });
 
-        getLoaderManager().initLoader(0, null, this);
+        if (!(NetworkUtil.isNetworkOnline(this))){
+            binding.back.setVisibility(View.VISIBLE);
+            binding.connection.setVisibility(View.VISIBLE);
+            binding.restart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getLoaderManager().restartLoader(0, null, SalawetActivity.this);
+                }
+            });
+        }else {
+            getLoaderManager().initLoader(0, null, this);
+        }
     }
 
     @Override
@@ -118,11 +130,8 @@ public class SalawetActivity extends AppCompatActivity implements SharedPreferen
         preferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
-
     public void UpdatUI(SalawetDetail salat){
         if (salat == null) return;
-        binding.back.setVisibility(View.GONE);
-        binding.pr.setVisibility(View.GONE);
         binding.fajr.setText(salat.getFajr());
         binding.subah.setText(salat.getSubah());
         binding.asr.setText(salat.getAsr());
@@ -134,19 +143,35 @@ public class SalawetActivity extends AppCompatActivity implements SharedPreferen
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        getLoaderManager().restartLoader(0, null, this);
+        if (!(NetworkUtil.isNetworkOnline(this))){
+            binding.back.setVisibility(View.VISIBLE);
+            binding.connection.setVisibility(View.VISIBLE);
+            binding.restart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getLoaderManager().restartLoader(0, null, SalawetActivity.this);
+                }
+            });
+        }else {
+            getLoaderManager().restartLoader(0, null, this);
+        }
     }
 
     @Override
     public Loader<SalawetDetail> onCreateLoader(int id, Bundle args) {
-        binding.back.setVisibility(View.VISIBLE);
-        binding.pr.setVisibility(View.VISIBLE);
-        return new  SalawetDetail.Async(SalawetActivity.this, cor, preferences, year, month, day);
+            binding.back.setVisibility(View.VISIBLE);
+            binding.pr.setVisibility(View.VISIBLE);
+            return new  SalawetDetail.Async(SalawetActivity.this, cor, preferences, year, month, day);
+
     }
 
     @Override
     public void onLoadFinished(Loader<SalawetDetail> loader, SalawetDetail data) {
-        UpdatUI(data);
+        binding.pr.setVisibility(View.GONE);
+            binding.back.setVisibility(View.GONE);
+            UpdatUI(data);
+
+
     }
 
     @Override

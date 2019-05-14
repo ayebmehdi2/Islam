@@ -97,7 +97,6 @@ public class SongsDetail {
                 e.printStackTrace();
             }
             if (json == null)return null;
-            Log.e("SOOONGS : ", json.substring(0, 100).toUpperCase());
             return getSongsDetail(json);
         }
     }

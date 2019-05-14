@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mehdi.rosary.Main2Activity;
+import com.mehdi.rosary.NetworkUtil;
 import com.mehdi.rosary.R;
 import com.mehdi.rosary.databinding.FragAzkarBinding;
 
@@ -35,7 +36,18 @@ public class AzkarActivity extends AppCompatActivity implements LoaderManager.Lo
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(recycleAzkar);
 
-        getLoaderManager().initLoader(0, null, this);
+        if (!(NetworkUtil.isNetworkOnline(this))){
+            binding.back.setVisibility(View.VISIBLE);
+            binding.connection.setVisibility(View.VISIBLE);
+            binding.restart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getLoaderManager().restartLoader(0, null, AzkarActivity.this);
+                }
+            });
+        }else {
+            getLoaderManager().initLoader(0, null, this);
+        }
 
         binding.tm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,16 +104,17 @@ public void def(){
 
     @Override
     public Loader<ArrayList<AzkarDetail>> onCreateLoader(int id, Bundle args) {
-        binding.pr.setVisibility(View.VISIBLE);
-        binding.recAzkar.setVisibility(View.INVISIBLE);
-        return new AzkarDetail.AsyncAzkar(AzkarActivity.this, ty);
+
+            binding.pr.setVisibility(View.VISIBLE);
+            binding.recAzkar.setVisibility(View.INVISIBLE);
+            return new AzkarDetail.AsyncAzkar(AzkarActivity.this, ty);
     }
 
     @Override
     public void onLoadFinished(Loader<ArrayList<AzkarDetail>> loader, ArrayList<AzkarDetail> data) {
         binding.pr.setVisibility(View.GONE);
-        binding.recAzkar.setVisibility(View.VISIBLE);
-        recycleAzkar.swapAdapter(data);
+            binding.recAzkar.setVisibility(View.VISIBLE);
+            recycleAzkar.swapAdapter(data);
     }
 
     @Override

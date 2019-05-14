@@ -28,8 +28,6 @@
 
         <activity android:name=".Azkar.AzkarActivity"/>
 
-        <activity android:name=".PlayerAzkar"/>
-
         <activity android:name=".Sebha.TasbihActivity"/>
 
         <activity android:name=".SalawatTime.SalawetActivity"/>

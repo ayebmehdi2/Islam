@@ -56,7 +56,7 @@
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="#fafafa" />
+            <solid android:color="#fff" />
 
         </shape>
     </item>
