@@ -24,7 +24,7 @@
         <TextView
             android:id="@+id/date"
             android:textColor="@color/gray_blue_text"
-            android:layout_width="220dp"
+            android:layout_width="match_parent"
             tools:text="10  May  2019"
             android:textSize="20sp"
             android:layout_height="wrap_content" />
@@ -40,15 +40,6 @@
             android:textSize="16sp" />
 
 
-        <ImageView
-            android:contentDescription="@string/to"
-            android:padding="8dp"
-            android:id="@+id/map"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="-8dp"
-            android:layout_alignParentEnd="true"
-            app:srcCompat="@drawable/ic_place" />
     </RelativeLayout>
 
     <LinearLayout

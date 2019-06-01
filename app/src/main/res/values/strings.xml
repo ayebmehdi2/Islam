@@ -1,5 +1,5 @@
-<resources>
-    <string name="app_name">Rosary</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">اسلاميات</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -49,4 +49,14 @@
     <string name="to">TODO</string>
     <string name="imsak">Imsak</string>
     <string name="go">توجه</string>
+    <string name="bio">I\'m professional jenior software engineer and expert in mobile application field development. I have knowledge and experience working with Android development platforms.</string>
+    <string name="sub_name">Android App Developer</string>
+    <string name="name">Mehdi EL Ayeb</string>
+    <string name="_216_52533368">+216 52533368</string>
+    <string name="appwidget_text" tools:ignore="ExtraTranslation">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="title_activity_">Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

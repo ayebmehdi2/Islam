@@ -1,6 +1,11 @@
 package com.mehdi.rosary.AzkarSong;
 
 import android.app.LoaderManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.databinding.DataBindingUtil;
@@ -8,6 +13,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.media.session.MediaButtonReceiver;
+import android.support.v4.media.session.MediaSessionCompat;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
@@ -38,9 +47,12 @@ import java.util.ArrayList;
 
 public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<SongsDetail>>, RecycleAzkarSongs.click,  ExoPlayer.EventListener {
 
-    ActivitySongBinding binding;
-    RecycleAzkarSongs azkarSongs;
+    private ActivitySongBinding binding;
+    private RecycleAzkarSongs azkarSongs;
     private SimpleExoPlayer player;
+    private static MediaSessionCompat compat;
+    private PlaybackStateCompat.Builder playCompat;
+    private NotificationManager manager;
     private String audi;
     private String name;
     private ImageView pl;
@@ -69,6 +81,7 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
         }else {
             getLoaderManager().initLoader(0, null, this);
         }
+        initilazeMediaSessionCompat();
 
     }
     @Override
@@ -91,6 +104,8 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
     public void onLoaderReset(Loader<ArrayList<SongsDetail>> loader) {
 
     }
+
+
     public void toback(View view){
         startActivity(new Intent(this, Main2Activity.class));
     }
@@ -125,6 +140,8 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
     public void inlove() {
 
     }
+
+
     private void pausePlayer(){
         if (player == null) return;
         player.setPlayWhenReady(false);
@@ -135,18 +152,11 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
         player.setPlayWhenReady(true);
         player.getPlaybackState();
     }
-    private void initilazePlayer(String uri) {
 
+    private void initilazePlayer(String uri) {
         binding.player.setVisibility(View.VISIBLE);
+        binding.seekBar.setVisibility(View.VISIBLE);
         binding.nameZeker.setText(name);
-        binding.clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                releasePlayer();
-                audi = null;
-                binding.player.setVisibility(View.GONE);
-            }
-        });
         binding.play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,6 +169,18 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
                 pausePlayer();
             }
         });
+        binding.clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (player != null) releasePlayer();
+                manager.cancelAll();
+                audi = null;
+                binding.player.setVisibility(View.GONE);
+                binding.seekBar.setVisibility(View.GONE);
+
+            }
+        });
+
 
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
         final ExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
@@ -187,8 +209,40 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
         player.prepare(mediaSource);
         startPlayer();
     }
-    @Override
+    public void initilazeMediaSessionCompat(){
+
+        compat = new MediaSessionCompat(this, "PlaySong");
+        compat.setFlags(MediaSessionCompat.FLAG_HANDLES_MEDIA_BUTTONS | MediaSessionCompat.FLAG_HANDLES_TRANSPORT_CONTROLS);
+        compat.setMediaButtonReceiver(null);
+
+        playCompat = new PlaybackStateCompat.Builder()
+                .setActions(PlaybackStateCompat.ACTION_PLAY |
+                        PlaybackStateCompat.ACTION_PAUSE |
+                        PlaybackStateCompat.ACTION_PLAY_PAUSE);
+
+        compat.setPlaybackState(playCompat.build());
+
+        compat.setCallback(new myMediaSession());
+
+        compat.setActive(true);
+
+    }
+
+    private Runnable runnable;
+    private Handler handler;
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (player == null) return;
+                binding.seekBar.setProgress((int) ((player.getCurrentPosition()*100)/player.getDuration()));
+                handler.postDelayed(runnable, 1000);
+            }
+        };
+        handler.postDelayed(runnable, 0);
+
         if ((playbackState == ExoPlayer.STATE_READY) && playWhenReady){
             binding.play.setVisibility(View.GONE);
             binding.pause.setVisibility(View.VISIBLE);
@@ -198,12 +252,21 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
                 azkarSongs.notifyItemChanged(azkarSongs.getCheckedPosition());
                 azkarSongs.setCheckedPosition(azkarSongs.getPosition());
             }
+
+            playCompat.setState(PlaybackStateCompat.STATE_PLAYING, player.getContentPosition(), 1f);
+
         }else if ((playbackState == ExoPlayer.STATE_READY)){
             binding.play.setVisibility(View.VISIBLE);
             binding.pause.setVisibility(View.GONE);
             pl.setVisibility(View.VISIBLE);
             pa.setVisibility(View.GONE);
+
+            playCompat.setState(PlaybackStateCompat.STATE_PAUSED, player.getContentPosition(), 1f);
+
         }
+        compat.setPlaybackState(playCompat.build());
+        showNotification(playCompat.build(), name);
+
     }
     public void releasePlayer(){
         if (player == null ) return;
@@ -225,5 +288,61 @@ public class PlaySong extends AppCompatActivity implements LoaderManager.LoaderC
     protected void onDestroy() {
         super.onDestroy();
         releasePlayer();
+        if (compat != null) compat.setActive(false);
+        manager.cancelAll();
     }
+
+    class myMediaSession extends MediaSessionCompat.Callback{
+        @Override
+        public void onPlay() {
+            super.onPlay();
+            startPlayer();
+        }
+
+        @Override
+        public void onPause() {
+            super.onPause();
+            pausePlayer();
+        }
+    }
+    public void showNotification(PlaybackStateCompat compa, String title){
+
+
+        int icone = 0;
+        String playPause = null;
+        if (compa.getState() == PlaybackStateCompat.STATE_PLAYING){
+            icone = R.drawable.ic_pause_b;
+            playPause = "PAUSE";
+        }else if (compa.getState() == PlaybackStateCompat.STATE_PAUSED){
+            icone = R.drawable.ic_play_button;
+            playPause = "PLAY";
+        }
+
+        NotificationCompat.Action action = new NotificationCompat.Action(icone, playPause,
+                MediaButtonReceiver.buildMediaButtonPendingIntent(this, PlaybackStateCompat.ACTION_PLAY_PAUSE));
+
+        PendingIntent intent = PendingIntent.getActivity(this, 0, new Intent(this, PlaySong.class), 0);
+
+        Notification notification  = new NotificationCompat.Builder(this).setContentTitle(title)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setSmallIcon(R.drawable.ic_music)
+                .addAction(action)
+                .setColor(0x0288D1)
+                .setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
+                        .setMediaSession(compat.getSessionToken()))
+                .setContentIntent(intent).build();
+
+
+        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        manager.notify(0, notification);
+
+        }
+    public static class MediaReceiver extends BroadcastReceiver {
+        public MediaReceiver() {}
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            MediaButtonReceiver.handleIntent(compat, intent);
+        }
+    }
+
 }

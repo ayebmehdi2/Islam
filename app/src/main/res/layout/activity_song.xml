@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:background="#e0e0e0"
@@ -12,7 +11,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
         android:paddingStart="8dp"
-        android:paddingEnd="16dp"
         android:background="@drawable/sh1"
     android:layout_height="65dp">
         <ImageView
@@ -20,6 +18,7 @@
             android:id="@+id/back"
             android:layout_width="55dp"
             android:padding="8dp"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/ic_to_back"
             android:layout_height="match_parent" />
         <TextView
@@ -31,6 +30,14 @@
             android:textColor="#616161"
             android:gravity="center_vertical"
             android:layout_height="match_parent" />
+        <ImageView
+            android:onClick="toback"
+            android:id="@+id/fav"
+            android:layout_width="55dp"
+            android:padding="16dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_favorite"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -41,8 +48,10 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content"/>
 
+
     <LinearLayout
         android:id="@+id/player"
+
         android:visibility="gone"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +87,6 @@
             android:textSize="18sp"
             android:paddingEnd="16dp"
             android:gravity="center_vertical"
-            android:text="أذكار الصباح والمساء"
             android:layout_height="match_parent"
             android:layout_weight="1"
             />
@@ -92,6 +100,15 @@
             android:layout_height="50dp" />
     </LinearLayout>
 
+    <SeekBar
+        android:id="@+id/seek_bar"
+        android:visibility="gone"
+        android:layout_width="0dp"
+        app:layout_constraintStart_toStartOf="@id/player"
+        android:layout_height="20dp"
+        android:background="#F5F5F5"
+        app:layout_constraintEnd_toEndOf="@id/player"
+        app:layout_constraintBottom_toTopOf="@id/player"/>
 
     <ProgressBar
         android:id="@+id/pr"

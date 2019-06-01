@@ -21,8 +21,8 @@ public class TasbihActivity extends AppCompatActivity {
     TextView sta;
     TextView con;
     SharedPreferences preference;
+    private MediaPlayer mPlayer;
 
-    MediaPlayer player;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +39,19 @@ public class TasbihActivity extends AppCompatActivity {
         con = findViewById(R.id.conn);
         con.setText(String.valueOf(Counter));
 
-        player = MediaPlayer.create(this, R.raw.ppp);
         findViewById(R.id.main_bead).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (mPlayer != null){
+                    mPlayer.stop();
+                    mPlayer.release();
+                    mPlayer = null;
+                }
+
+                mPlayer = MediaPlayer.create(TasbihActivity.this, R.raw.pop);
+
+                mPlayer.start();
 
                 Flubber.with()
                         .animation(Flubber.AnimationPreset.POP)
